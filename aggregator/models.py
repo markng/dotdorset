@@ -39,7 +39,6 @@ class Feed(models.Model):
     print self.__unicode__()+' is being updated\n'
     parsed = feedparser.parse(self.url)
     pp = pprint.PrettyPrinter(indent=4)
-    pp.pprint(parsed.entries[0])
     # properties to take from parser
     self.title = parsed.feed.title
     self.link = getattr(parsed.feed, 'link', '')		
@@ -49,7 +48,9 @@ class Feed(models.Model):
     self.author_link = getattr(parsed.feed.author_detail, 'href', '')		
     self.subtitle = getattr(parsed.feed, 'subtitle', '')
     self.save()
-
+    pp.pprint(self.feeditem_set.all())
+    for entry in parsed.entries:
+      pass
     return self
 	
 class FeedItem(models.Model):

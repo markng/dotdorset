@@ -16,7 +16,7 @@ setup_environment()
 
 from aggregator.models import Feed, FeedItem
 
-feeds = Feed.objects.all()
+feeds = Feed.objects.select_related().all()
 
 for	feed in feeds:
 	print feed.refresh()
