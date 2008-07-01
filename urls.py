@@ -6,4 +6,6 @@ urlpatterns = patterns('',
     (r'^feeds/$', 'dotdorset.aggregator.views.index'),
     # Uncomment this for admin:
     (r'^admin/', include('django.contrib.admin.urls')),
+    (r'^css/(?P<path>.*)$', 'django.views.static.serve', {'document_root': '/Users/mng/Documents/projects/django/dotdorset/css'}),
+    (r'^images/(?P<path>.*)$', 'django.views.static.serve', {'document_root': '/Users/mng/Documents/projects/django/dotdorset/images'}),
 )
