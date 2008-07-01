@@ -1,6 +1,7 @@
 from django.db import models
 import feedparser
 import pprint
+import datetime, time, calendar
 
 # Create your models here.
 class Category(models.Model):
@@ -49,15 +50,17 @@ class Feed(models.Model):
     self.subtitle = getattr(parsed.feed, 'subtitle', '')
     self.save()
     for entry in parsed.entries:
-      pp.pprint(entry)
+      #pp.pprint(entry)
       try:
-        feeditem = self.feeditem_set.get_or_create(link=entry.link, feed=self)
+        pp.pprint(getattr(entry, 'published_parsed', entry.updated_parsed))
+        pubdate_transformed = datetime.datetime.utcfromtimestamp(calendar.timegm(getattr(entry, 'published_parsed', entry.updated_parsed)))
+        feeditem_gc = self.feeditem_set.get_or_create(link=entry.link, feed=self, defaults={'pub_date': pubdate_transformed})
+        feeditem = feeditem_gc[0]
         feeditem.title = getattr(entry, 'title', '')
         feeditem.description = getattr(entry, 'summary', '')
         feeditem.author_name = getattr(entry.author_detail, 'name', '')		
         feeditem.author_email = getattr(entry.author_detail, 'email', '')		
-        feeditem.author_link = getattr(entry.author_detail, 'href', '')		
-        feeditem.pub_date = getattr(entry, 'published', entry.updated)
+        feeditem.author_link = getattr(entry.author_detail, 'href', '')
         feeditem.save()
       except Exception, e:
         pp.pprint(e)
@@ -73,7 +76,7 @@ class FeedItem(models.Model):
   author_email = models.CharField("Author Email",max_length=255,blank=True)
   author_link = models.URLField("Author Link",verify_exists=False, max_length=255,blank=True)
   content = models.TextField("Content of Item",blank=True)
-  pub_date = models.DateTimeField("Publication Date",blank=True)
+  pub_date = models.DateTimeField("Publication Date")
   unique_id = models.TextField("Item unique ID",blank=True)
   enclosure = models.TextField("Enclosure",blank=True)
   created_at = models.DateTimeField("Time Created",auto_now_add=True)
