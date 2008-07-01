@@ -72,7 +72,9 @@ class Feed(models.Model):
         if hasattr(entry, 'author_detail'):
           feeditem.author_name = getattr(entry.author_detail, 'name', '')		
           feeditem.author_email = getattr(entry.author_detail, 'email', '')		
-          feeditem.author_link = getattr(entry.author_detail, 'href', '')          
+          feeditem.author_link = getattr(entry.author_detail, 'href', '')
+        feeditem.content = getattr(entry, 'content')
+        feeditem.unique_id = getattr(entry, 'id', '')
         feeditem.save()
       except Exception, e:
         pass

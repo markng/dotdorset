@@ -1,5 +1,6 @@
 from django.http import HttpResponse
 from dotdorset.aggregator.models import *
+from django.template import Template
 import pprint
 
 def index(request):
