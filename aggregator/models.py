@@ -1,7 +1,7 @@
 from django.db import models
 import feedparser
 import pprint
-import datetime, time, calendar
+import djangofeedparserdates
 
 # Create your models here.
 class Category(models.Model):
@@ -26,6 +26,8 @@ class Feed(models.Model):
   created_at = models.DateTimeField("Time Created",auto_now_add=True,blank=True)
   updated_at = models.DateTimeField("Time Last Updated",auto_now=True,blank=True)
   next_retrieval = models.DateTimeField("Next Retrieval Time",auto_now_add=True)
+  last_modified = models.DateTimeField("Time Last Modified at server", null=True, blank=True)
+  etag = models.TextField("Etag from server", null=True, blank=True)
   category = models.ForeignKey(Category)
   approved = models.BooleanField()
   class Admin:
@@ -37,34 +39,46 @@ class Feed(models.Model):
 		
   def refresh(self):
     """refresh feed and feed items"""
-    print self.__unicode__()+' is being updated\n'
-    parsed = feedparser.parse(self.url)
+    if self.etag:
+      parsed = feedparser.parse(self.url, etag=self.etag)
+    elif self.last_modified:
+      parsed = feedparser.parse(self.url, modified = djangofeedparserdates.datetimetotuple(self.last_modified))
+    else:
+      parsed = feedparser.parse(self.url)
+    
+    # if we get a 304, stop here
+    if parsed.status == 304:
+      return self, 'not changed'
+    
     pp = pprint.PrettyPrinter(indent=4)
     # properties to take from parser
     self.title = parsed.feed.title
     self.link = getattr(parsed.feed, 'link', '')		
     self.description = getattr(parsed.feed, 'description', '')		
-    self.author_name = getattr(parsed.feed.author_detail, 'name', '')		
-    self.author_email = getattr(parsed.feed.author_detail, 'email', '')		
-    self.author_link = getattr(parsed.feed.author_detail, 'href', '')		
+    if hasattr(parsed.feed, 'author_detail'):
+      self.author_name = getattr(parsed.feed.author_detail, 'name', '')		
+      self.author_email = getattr(parsed.feed.author_detail, 'email', '')		
+      self.author_link = getattr(parsed.feed.author_detail, 'href', '')      
+    self.etag = getattr(parsed, 'etag', '')
+    if hasattr(parsed, 'modified'):
+      self.last_modified = djangofeedparserdates.tupletodatetime(parsed.modified)
     self.subtitle = getattr(parsed.feed, 'subtitle', '')
     self.save()
     for entry in parsed.entries:
-      #pp.pprint(entry)
       try:
-        pp.pprint(getattr(entry, 'published_parsed', entry.updated_parsed))
-        pubdate_transformed = datetime.datetime.utcfromtimestamp(calendar.timegm(getattr(entry, 'published_parsed', entry.updated_parsed)))
+        pubdate_transformed = djangofeedparserdates.tupletodatetime(getattr(entry, 'published_parsed', entry.updated_parsed))
         feeditem_gc = self.feeditem_set.get_or_create(link=entry.link, feed=self, defaults={'pub_date': pubdate_transformed})
         feeditem = feeditem_gc[0]
         feeditem.title = getattr(entry, 'title', '')
         feeditem.description = getattr(entry, 'summary', '')
-        feeditem.author_name = getattr(entry.author_detail, 'name', '')		
-        feeditem.author_email = getattr(entry.author_detail, 'email', '')		
-        feeditem.author_link = getattr(entry.author_detail, 'href', '')
+        if hasattr(entry, 'author_detail'):
+          feeditem.author_name = getattr(entry.author_detail, 'name', '')		
+          feeditem.author_email = getattr(entry.author_detail, 'email', '')		
+          feeditem.author_link = getattr(entry.author_detail, 'href', '')          
         feeditem.save()
       except Exception, e:
         pp.pprint(e)
-    return self
+    return self, 'updated'
 	
 class FeedItem(models.Model):
   """Item belonging to a feed"""

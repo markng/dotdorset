@@ -19,4 +19,5 @@ from aggregator.models import Feed, FeedItem
 feeds = Feed.objects.select_related().all()
 
 for	feed in feeds:
-	print feed.refresh()
+  refresh = feed.refresh()
+  print refresh[0].__unicode__()+' '+refresh[1]
