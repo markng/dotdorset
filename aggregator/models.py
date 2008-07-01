@@ -48,9 +48,19 @@ class Feed(models.Model):
     self.author_link = getattr(parsed.feed.author_detail, 'href', '')		
     self.subtitle = getattr(parsed.feed, 'subtitle', '')
     self.save()
-    pp.pprint(self.feeditem_set.all())
     for entry in parsed.entries:
-      pass
+      pp.pprint(entry)
+      try:
+        feeditem = self.feeditem_set.get_or_create(link=entry.link, feed=self)
+        feeditem.title = getattr(entry, 'title', '')
+        feeditem.description = getattr(entry, 'summary', '')
+        feeditem.author_name = getattr(entry.author_detail, 'name', '')		
+        feeditem.author_email = getattr(entry.author_detail, 'email', '')		
+        feeditem.author_link = getattr(entry.author_detail, 'href', '')		
+        feeditem.pub_date = getattr(entry, 'published', entry.updated)
+        feeditem.save()
+      except Exception, e:
+        pp.pprint(e)
     return self
 	
 class FeedItem(models.Model):
@@ -63,7 +73,7 @@ class FeedItem(models.Model):
   author_email = models.CharField("Author Email",max_length=255,blank=True)
   author_link = models.URLField("Author Link",verify_exists=False, max_length=255,blank=True)
   content = models.TextField("Content of Item",blank=True)
-  pub_date = models.TimeField("Publication Date",blank=True)
+  pub_date = models.DateTimeField("Publication Date",blank=True)
   unique_id = models.TextField("Item unique ID",blank=True)
   enclosure = models.TextField("Enclosure",blank=True)
   created_at = models.DateTimeField("Time Created",auto_now_add=True)
