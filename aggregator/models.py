@@ -1,6 +1,5 @@
 from django.db import models
 import feedparser
-import pprint
 import djangofeedparserdates
 
 # Create your models here.
@@ -50,7 +49,6 @@ class Feed(models.Model):
     if parsed.status == 304:
       return self, 'not changed'
     
-    pp = pprint.PrettyPrinter(indent=4)
     # properties to take from parser
     self.title = parsed.feed.title
     self.link = getattr(parsed.feed, 'link', '')		
@@ -77,7 +75,7 @@ class Feed(models.Model):
           feeditem.author_link = getattr(entry.author_detail, 'href', '')          
         feeditem.save()
       except Exception, e:
-        pp.pprint(e)
+        pass
     return self, 'updated'
 	
 class FeedItem(models.Model):
