@@ -1,5 +1,5 @@
-from django.db import models
-import feedparser
+from django.db import models, connection
+import feedparser, pprint
 import djangofeedparserdates
 
 # Create your models here.
@@ -15,6 +15,8 @@ class Category(models.Model):
 class Feed(models.Model):
   """Feed to be aggregated"""
   url = models.URLField("Feed URL",max_length=255)
+  #username = models.CharField("Feed Username", max_length=255, blank=True)
+  #password = models.CharField("Feed Password", max_length=255, blank=True)
   title = models.TextField("Feed Title",blank=True)
   link = models.URLField("Link to site",verify_exists=False, max_length=255,blank=True)
   description = models.TextField("Feed description",blank=True)
@@ -73,11 +75,12 @@ class Feed(models.Model):
           feeditem.author_name = getattr(entry.author_detail, 'name', '')		
           feeditem.author_email = getattr(entry.author_detail, 'email', '')		
           feeditem.author_link = getattr(entry.author_detail, 'href', '')
-        feeditem.content = getattr(entry, 'content')
+        if hasattr(entry,'content'):
+          feeditem.content = entry.content[0].value
         feeditem.unique_id = getattr(entry, 'id', '')
         feeditem.save()
       except Exception, e:
-        pass
+        print e
     return self, 'updated'
 	
 class FeedItem(models.Model):

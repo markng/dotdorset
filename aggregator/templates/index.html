@@ -10,9 +10,33 @@
     <div>
       <h1><img src="/images/dotDorset.png" alt="dotDorset" /></h1>
       {% block content %}
-        {% for item in blogitems %}
-          {{ item.title }}
-        {% endfor %}
+        <div id="blogs">
+          <h2>Blogs</h2>
+          {% for item in blogitems %}
+          <h3><a href="{{ item.link }}">{{ item.title }}</a></h3>
+          <h4><a href="{{ item.feed.link }}">{{ item.feed }}</a></h4>
+          <p>{{ item.description|striptags }}</p>
+          {% endfor %}
+        </div>
+        
+        <div id="twitter">
+          <h2>Twitter</h2>
+          {% for item in twitteritems %}
+          <h3><a href="{{ item.link }}">{{ item.title }}</a></h3>
+          <h4><a href="{{ item.feed.link }}">{{ item.feed }}</a></h4>
+          <p>{{ item.description|striptags }}</p>
+          {% endfor %}
+          
+        </div>
+        
+        <div id="mailinglist">
+          <h2>Mailing List</h2>
+          {% for item in mlitems %}
+          <h3><a href="{{ item.link }}">{{ item.title }}</a></h3>
+          <h4><a href="{{ item.feed.link }}">{{ item.feed }}</a></h4>
+          <p>{{ item.description|striptags }}</p>
+          {% endfor %}          
+        </div>
       {% endblock %}
     </div>
     <script type="text/javascript">

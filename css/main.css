@@ -23,7 +23,7 @@ p {margin:0 0 1.5em;}
 p img {float:left;margin:1.5em 1.5em 1.5em 0;padding:0;}
 p img.right {float:right;margin:1.5em 0 1.5em 1.5em;}
 a:focus, a:hover {color:#000;}
-a {color:#009;text-decoration:underline;}
+a {color:#000;text-decoration:underline;}
 blockquote {margin:1.5em;color:#666;font-style:italic;}
 strong {font-weight:bold;}
 em, dfn {font-style:italic;}
@@ -53,4 +53,35 @@ body div
 {
 	width: 960px;
 	margin: 0 auto;
+}
+
+div.half, div#blogs, div#twitter, div#mailinglist
+{
+  width: 470px;
+  float:left;
+  margin-right:10px;
+}
+
+div.third
+{
+  width: 310px;
+  float:left;
+  margin-right:10px;
+}
+
+div.quarter
+{
+  width: 230px;
+  float:left;
+  margin-right:10px;
+}
+
+div.last, div#twitter
+{
+  margin-right: 0px;
+}
+
+div#blogs h4 a
+{
+  font-style: italic;
 }

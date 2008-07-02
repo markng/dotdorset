@@ -631,6 +631,20 @@ subgraph cluster_dotdorset_aggregator_models {
         ></TD></TR>
         
         <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT COLOR="#7B7B7B" FACE="Helvetica Bold">last_modified</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT COLOR="#7B7B7B" FACE="Helvetica Bold">DateTimeField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT COLOR="#7B7B7B" FACE="Helvetica Bold">etag</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT COLOR="#7B7B7B" FACE="Helvetica Bold">TextField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
         ><FONT FACE="Helvetica Bold">category</FONT
         ></TD>
         <TD ALIGN="LEFT"
@@ -720,10 +734,10 @@ subgraph cluster_dotdorset_aggregator_models {
         ></TD></TR>
         
         <TR><TD ALIGN="LEFT" BORDER="0"
-        ><FONT COLOR="#7B7B7B" FACE="Helvetica Bold">pub_date</FONT
+        ><FONT FACE="Helvetica Bold">pub_date</FONT
         ></TD>
         <TD ALIGN="LEFT"
-        ><FONT COLOR="#7B7B7B" FACE="Helvetica Bold">TimeField</FONT
+        ><FONT FACE="Helvetica Bold">DateTimeField</FONT
         ></TD></TR>
         
         <TR><TD ALIGN="LEFT" BORDER="0"
