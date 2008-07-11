@@ -55,7 +55,7 @@ body div.container
 	margin: 0 auto;
 }
 
-div.clear
+div.clear, div#footer
 {
   clear:both;
 }
@@ -95,4 +95,18 @@ div.last, div#jobs
 div h4 a
 {
   font-style: italic;
+}
+
+div#footer
+{
+  background: #000000;
+  color: #fff;
+  min-height: 100px;
+  margin-bottom: 0;
+  
+}
+
+div#footer a
+{
+  color: #fff;
 }

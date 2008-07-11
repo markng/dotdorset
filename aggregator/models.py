@@ -46,9 +46,9 @@ class Feed(models.Model):
       parsed = feedparser.parse(self.url, modified = djangofeedparserdates.datetimetotuple(self.last_modified))
     else:
       parsed = feedparser.parse(self.url)
-    
+    pprint.pprint(parsed)
     # if we get a 304, stop here
-    if parsed.status == 304:
+    if getattr(parsed, 'status', 200) == 304:
       return self, 'not changed'
     
     # properties to take from parser
