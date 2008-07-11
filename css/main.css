@@ -66,7 +66,7 @@ div.full, div#intro
   float: left;
 }
 
-div.half, div#blogs, div#mailinglist
+div.half, div#blogs, div#mailinglist, div#bookmarks
 {
   width: 470px;
   float:left;
@@ -87,7 +87,7 @@ div.quarter, div#twitter, div#jobs
   margin-right:10px;
 }
 
-div.last, div#twitter, div#jobs
+div.last, div#jobs
 {
   margin-right: 0px;
 }

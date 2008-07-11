@@ -39,7 +39,6 @@
           <h2>Jobs</h2>
           {% for item in jobitems %}
           <h3><a href="{{ item.link }}">{{ item.title }}</a></h3>
-          <h4><a href="{{ item.feed.link }}">{{ item.feed }}</a></h4>
           <div class="content">
             {% if item.content %}
               {{ item.content|sanitize|safe }}
@@ -70,8 +69,7 @@
         <div id="bookmarks">
           <h2>Bookmarks</h2>
           {% for item in bookmarkitems %}
-          <h3><a href="{{ item.link }}">{{ item.title }}</a></h3>
-          <h4><a href="{{ item.feed.link }}">{{ item.feed }}</a></h4>
+          <h4><a href="{{ item.link }}">{{ item.title }}</a> from <a href="{{ item.feed.link }}">{{ item.feed }}</a></h4>
           <div class="content">
             {% if item.content %}
               {{ item.content|sanitize|safe }}

@@ -10,7 +10,7 @@ def index(request):
   blogitems = FeedItem.objects.filter(feed__category__name='Blogs').order_by('-pub_date')[0:5]
   twitteritems = FeedItem.objects.filter(feed__category__name='Twitter').order_by('-pub_date')[0:15]
   mlitems = FeedItem.objects.filter(feed__category__name='Mailing List').order_by('-pub_date')[0:5]
-  jobitems = FeedItem.objects.filter(feed__category__name='Jobs').order_by('-pub_date')[0:5]
+  jobitems = FeedItem.objects.filter(feed__category__name='Jobs').order_by('-pub_date')[0:3]
   bookmarkitems = FeedItem.objects.filter(feed__category__name='Bookmarks').order_by('-pub_date')[0:20]
   
   rendered = render_to_string('index.html', {'blogitems': blogitems, 'twitteritems': twitteritems, 'mlitems': mlitems, 'jobitems': jobitems, 'bookmarkitems': bookmarkitems})
