@@ -1,5 +1,5 @@
 from django.db import models, connection
-import feedparser, pprint
+import urllib2, feedparser, pprint, datetime
 import djangofeedparserdates
 
 # Create your models here.
@@ -14,9 +14,9 @@ class Category(models.Model):
 
 class Feed(models.Model):
   """Feed to be aggregated"""
-  url = models.URLField("Feed URL",max_length=255)
-  #username = models.CharField("Feed Username", max_length=255, blank=True)
-  #password = models.CharField("Feed Password", max_length=255, blank=True)
+  url = models.TextField("Feed URL",max_length=255)
+  username = models.CharField("Feed Username", max_length=255, blank=True)
+  password = models.CharField("Feed Password", max_length=255, blank=True)
   title = models.TextField("Feed Title",blank=True)
   link = models.URLField("Link to site",verify_exists=False, max_length=255,blank=True)
   description = models.TextField("Feed description",blank=True)
@@ -66,7 +66,15 @@ class Feed(models.Model):
     self.save()
     for entry in parsed.entries:
       try:
-        pubdate_transformed = djangofeedparserdates.tupletodatetime(getattr(entry, 'published_parsed', entry.updated_parsed))
+        #handle dates - we need a date for ordering
+        if hasattr(entry,'published_parsed'):
+          pubdate_transformed = djangofeedparserdates.tupletodatetime(entry.published_parsed)
+        elif hasattr(entry,'updated_parsed'):
+          pubdate_transformed = djangofeedparserdates.tupletodatetime(entry.updated_parsed)
+        else:
+          pubdate_transformed = datetime.datetime.utcnow()
+          
+        #get or create, to avoid duplicates, use link and feed as identifiers.
         feeditem_gc = self.feeditem_set.get_or_create(link=entry.link, feed=self, defaults={'pub_date': pubdate_transformed})
         feeditem = feeditem_gc[0]
         feeditem.title = getattr(entry, 'title', '')
@@ -80,6 +88,7 @@ class Feed(models.Model):
         feeditem.unique_id = getattr(entry, 'id', '')
         feeditem.save()
       except Exception, e:
+        #just print the exception, don't stop execution - this will break refreshes
         print e
     return self, 'updated'
 	

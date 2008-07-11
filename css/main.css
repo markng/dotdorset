@@ -49,13 +49,24 @@ tfoot {font-style:italic;}
 caption {background:#eee;}
 
 /* dotDorset styles */
-body div
+body div.container
 {
 	width: 960px;
 	margin: 0 auto;
 }
 
-div.half, div#blogs, div#twitter, div#mailinglist
+div.clear
+{
+  clear:both;
+}
+
+div.full, div#intro
+{
+  width: 960px;
+  float: left;
+}
+
+div.half, div#blogs, div#mailinglist
 {
   width: 470px;
   float:left;
@@ -69,19 +80,19 @@ div.third
   margin-right:10px;
 }
 
-div.quarter
+div.quarter, div#twitter, div#jobs
 {
   width: 230px;
   float:left;
   margin-right:10px;
 }
 
-div.last, div#twitter
+div.last, div#twitter, div#jobs
 {
   margin-right: 0px;
 }
 
-div#blogs h4 a
+div h4 a
 {
   font-style: italic;
 }

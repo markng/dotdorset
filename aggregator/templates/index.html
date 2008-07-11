@@ -1,3 +1,4 @@
+{% load aggregator_tags %}
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html>
@@ -7,36 +8,80 @@
     <link rel="stylesheet" type="text/css" href="/css/main.css" />
   </head>
   <body>
-    <div>
+    <div class="container">
       <h1><img src="/images/dotDorset.png" alt="dotDorset" /></h1>
       {% block content %}
+        <div id="intro">
+          <p>dotDorset is a portal for the Dorset web, tech and digital community. <a href="/join/">Join us.</a></p>
+        </div>
         <div id="blogs">
           <h2>Blogs</h2>
           {% for item in blogitems %}
           <h3><a href="{{ item.link }}">{{ item.title }}</a></h3>
           <h4><a href="{{ item.feed.link }}">{{ item.feed }}</a></h4>
-          <p>{{ item.description|striptags }}</p>
+          <p>{{ item.description|sanitize|safe }}</p>
           {% endfor %}
         </div>
         
         <div id="twitter">
           <h2>Twitter</h2>
           {% for item in twitteritems %}
+          <div class="content">
+            {% if item.content %}
+              {{ item.content|sanitize|safe }}
+            {% else %}
+              {{ item.description|sanitize|safe }}
+            {% endif %}
+          </div>
+          {% endfor %}
+        </div>
+        <div id="jobs">
+          <h2>Jobs</h2>
+          {% for item in jobitems %}
           <h3><a href="{{ item.link }}">{{ item.title }}</a></h3>
           <h4><a href="{{ item.feed.link }}">{{ item.feed }}</a></h4>
-          <p>{{ item.description|striptags }}</p>
+          <div class="content">
+            {% if item.content %}
+              {{ item.content|sanitize|safe }}
+            {% else %}
+              <p>{{ item.description|sanitize|safe }}</p>
+            {% endif %}
+          </div>
           {% endfor %}
-          
         </div>
         
+        <div class="clear">
+          &nbsp;
+        </div>
         <div id="mailinglist">
-          <h2>Mailing List</h2>
+          <h2><a href="http://groups.google.com/group/dotdorset">Mailing List</a></h2>
+          <p>To subscribe to the mailing list, either <a href="http://groups.google.com/group/dotdorset">join the google group</a> or email <a href="mailto:dotdorset-subscribe@googlegroups.com">dotdorset-subscribe@googlegroups.com</a>.</p>
           {% for item in mlitems %}
           <h3><a href="{{ item.link }}">{{ item.title }}</a></h3>
-          <h4><a href="{{ item.feed.link }}">{{ item.feed }}</a></h4>
-          <p>{{ item.description|striptags }}</p>
+          <div class="content">
+            {% if item.content %}
+              {{ item.content|sanitize|safe }}
+            {% else %}
+              {{ item.description|sanitize|safe }}
+            {% endif %}
+          </div>
           {% endfor %}          
         </div>
+        <div id="bookmarks">
+          <h2>Bookmarks</h2>
+          {% for item in bookmarkitems %}
+          <h3><a href="{{ item.link }}">{{ item.title }}</a></h3>
+          <h4><a href="{{ item.feed.link }}">{{ item.feed }}</a></h4>
+          <div class="content">
+            {% if item.content %}
+              {{ item.content|sanitize|safe }}
+            {% else %}
+              <p>{{ item.description|sanitize|safe }}</p>
+            {% endif %}
+          </div>
+          {% endfor %}
+        </div>
+        
       {% endblock %}
     </div>
     <script type="text/javascript">
