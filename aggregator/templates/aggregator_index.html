@@ -1,21 +1,13 @@
+{% extends "base.html" %}
 {% load aggregator_tags %}
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html>
-  <head>
-    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
-    <title>{% block title %}dotDorset - Dorset web, tech, digital and geek community{% endblock %}</title>
-    <link rel="stylesheet" type="text/css" href="/css/main.css" />
-  </head>
-  <body>
-    <div class="container">
-      <h1><img src="/images/dotDorset.png" alt="dotDorset" /></h1>
+
       {% block content %}
         <div id="intro">
           <p>dotDorset is a portal for the Dorset web, tech and digital community. <a href="/join/">Join us.</a></p>
         </div>
         <div id="blogs">
           <h2>Blogs</h2>
+          <p>To have your blog listed here, email <a href="mailto:addme@dotdorset.org">addme@dotdorset.org</a></p>
           {% for item in blogitems %}
           <h3><a href="{{ item.link }}">{{ item.title }}</a></h3>
           <h4><a href="{{ item.feed.link }}">{{ item.feed }}</a></h4>
@@ -24,7 +16,8 @@
         </div>
         
         <div id="twitter">
-          <h2>Twitter</h2>
+          <h2><a href="http://twitter.com/dotdorset">Twitter</a></h2>
+          <p>Follow <a href="http://twitter.com/dotdorset">@dotdorset</a> if you want to appear here !</p>
           {% for item in twitteritems %}
           <div class="content">
             {% if item.content %}
@@ -37,6 +30,7 @@
         </div>
         <div id="jobs">
           <h2>Jobs</h2>
+          <p>If you're a web company based in Dorset, and have have an RSS feed for your jobs, email <a href="mailto:addme@dotdorset.org">addme@dotdorset.org</a> to get listed here for free !</p>
           {% for item in jobitems %}
           <h3><a href="{{ item.link }}">{{ item.title }}</a></h3>
           <div class="content">
@@ -68,6 +62,7 @@
         </div>
         <div id="bookmarks">
           <h2>Bookmarks</h2>
+          <p>To have your bookmarks listed here, email <a href="mailto:addme@dotdorset.org">addme@dotdorset.org</a></p>
           {% for item in bookmarkitems %}
           <h4><a href="{{ item.link }}">{{ item.title }}</a> from <a href="{{ item.feed.link }}">{{ item.feed }}</a></h4>
           <div class="content">
@@ -81,15 +76,3 @@
         </div>
         
       {% endblock %}
-    </div>
-    <script type="text/javascript">
-    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-    </script>
-    <script type="text/javascript">
-    var pageTracker = _gat._getTracker("UA-1944573-2");
-    pageTracker._initData();
-    pageTracker._trackPageview();
-    </script>
-  </body>
-</html>

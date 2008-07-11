@@ -13,5 +13,5 @@ def index(request):
   jobitems = FeedItem.objects.filter(feed__category__name='Jobs').order_by('-pub_date')[0:3]
   bookmarkitems = FeedItem.objects.filter(feed__category__name='Bookmarks').order_by('-pub_date')[0:20]
   
-  rendered = render_to_string('index.html', {'blogitems': blogitems, 'twitteritems': twitteritems, 'mlitems': mlitems, 'jobitems': jobitems, 'bookmarkitems': bookmarkitems})
+  rendered = render_to_string('aggregator_index.html', {'blogitems': blogitems, 'twitteritems': twitteritems, 'mlitems': mlitems, 'jobitems': jobitems, 'bookmarkitems': bookmarkitems})
   return HttpResponse(rendered)
