@@ -19,5 +19,10 @@ from aggregator.models import Feed, FeedItem
 feeds = Feed.objects.select_related().all()
 
 for	feed in feeds:
-  refresh = feed.refresh()
-  print refresh[0].__unicode__()+' '+refresh[1]
+  try:
+    refresh = feed.refresh()    
+  except Exception, e:
+    print feed.url + ' failed'
+  else:
+    print refresh[0].__unicode__()+' '+refresh[1]
+
