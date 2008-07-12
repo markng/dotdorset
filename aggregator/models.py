@@ -46,7 +46,6 @@ class Feed(models.Model):
       parsed = feedparser.parse(self.url, modified = djangofeedparserdates.datetimetotuple(self.last_modified))
     else:
       parsed = feedparser.parse(self.url)
-    pprint.pprint(parsed)
     # if we get a 304, stop here
     if getattr(parsed, 'status', 200) == 304:
       return self, 'not changed'
@@ -105,6 +104,7 @@ class FeedItem(models.Model):
   pub_date = models.DateTimeField("Publication Date")
   unique_id = models.TextField("Item unique ID",blank=True)
   enclosure = models.TextField("Enclosure",blank=True)
+  pickle = models.TextField("Pickled feed parser item", blank=True)
   created_at = models.DateTimeField("Time Created",auto_now_add=True)
   updated_at = models.DateTimeField("Time Last Updated",auto_now=True)
   def __unicode__(self):
