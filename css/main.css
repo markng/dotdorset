@@ -66,28 +66,35 @@ div.full, div#intro
   float: left;
 }
 
-div.half, div#blogs, div#mailinglist, div#bookmarks
+div.half, div#blogs
 {
   width: 470px;
   float:left;
   margin-right:10px;
 }
 
-div.third
+div.third, div#twitter,div#mailinglist, div#bookmarks
 {
   width: 310px;
   float:left;
   margin-right:10px;
 }
 
-div.quarter, div#twitter, div#jobs
+div.twothirds
+{
+  width: 630px;
+  float: left;
+  margin-right: 10px;
+}
+
+div.quarter, div#jobs, div#events
 {
   width: 230px;
   float:left;
   margin-right:10px;
 }
 
-div.last, div#jobs
+div.last, div#jobs, div#bookmarks
 {
   margin-right: 0px;
 }
