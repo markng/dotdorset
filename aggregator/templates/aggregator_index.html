@@ -15,22 +15,20 @@
           {% endfor %}
         </div>
         
-        <div id="twitter">
-          <h2><a href="http://twitter.com/dotdorset">Twitter</a></h2>
-          <p>Follow <a href="http://twitter.com/dotdorset">@dotdorset</a> if you want to appear here !</p>
-          {% for item in twitteritems %}
-          <div class="content">
-            {% if item.content %}
-              {{ item.content|sanitize|safe }}
-            {% else %}
-              {{ item.description|sanitize|safe }}
-            {% endif %}
-          </div>
+        <div id="events">
+          <h2>Events</h2>
+          <p>To get your Dorset events listed here, add them to the <a href="http://upcoming.yahoo.com/group/4604/">Dorset Web Group</a> on upcoming.</p>
+          {% for item in eventitems %}
+          <h3><a href="{{ item.link }}">{{ item.title }}</a></h3>
+          <p>{{ item.description|sanitize|safe }}</p>
           {% endfor %}
+          
         </div>
+        
+        
         <div id="jobs">
           <h2>Jobs</h2>
-          <p>If you're a web company based in Dorset, and have have an RSS feed for your jobs, email <a href="mailto:addme@dotdorset.org">addme@dotdorset.org</a> to get listed here for free !</p>
+          <p>If you're a web company based in Dorset, and have have an RSS feed for your jobs, email <a href="mailto:addme@dotdorset.org">addme@dotdorset.org</a> to get listed here for <strong>free !</strong></p>
           {% for item in jobitems %}
           <h3><a href="{{ item.link }}">{{ item.title }}</a></h3>
           <div class="content">
@@ -46,9 +44,24 @@
         <div class="clear">
           &nbsp;
         </div>
+        
+        <div id="twitter">
+          <h2><a href="http://twitter.com/dotdorset">Twitter</a></h2>
+          <p>Follow <a href="http://twitter.com/dotdorset"><strong>@dotdorset</strong></a> if you want to appear here !</p>
+          {% for item in twitteritems %}
+          <div class="content">
+            {% if item.content %}
+              {{ item.content|sanitize|safe }}
+            {% else %}
+              {{ item.description|sanitize|safe }}
+            {% endif %}
+          </div>
+          {% endfor %}
+        </div>
+        
         <div id="mailinglist">
           <h2><a href="http://groups.google.com/group/dotdorset">Mailing List</a></h2>
-          <p>To subscribe to the mailing list, either <a href="http://groups.google.com/group/dotdorset">join the google group</a> or email <a href="mailto:dotdorset-subscribe@googlegroups.com">dotdorset-subscribe@googlegroups.com</a>.</p>
+          <p>To subscribe to the mailing list, either <a href="http://groups.google.com/group/dotdorset"><strong>join the google group</strong></a> or email <a href="mailto:dotdorset-subscribe@googlegroups.com"><strong>dotdorset-subscribe@googlegroups.com</strong></a>.</p>
           {% for item in mlitems %}
           <h3><a href="{{ item.link }}">{{ item.title }}</a></h3>
           <div class="content">
@@ -64,14 +77,7 @@
           <h2>Bookmarks</h2>
           <p>To have your bookmarks listed here, email <a href="mailto:addme@dotdorset.org">addme@dotdorset.org</a></p>
           {% for item in bookmarkitems %}
-          <h4><a href="{{ item.link }}">{{ item.title }}</a> from <a href="{{ item.feed.link }}">{{ item.feed }}</a></h4>
-          <div class="content">
-            {% if item.content %}
-              {{ item.content|sanitize|safe }}
-            {% else %}
-              <p>{{ item.description|sanitize|safe }}</p>
-            {% endif %}
-          </div>
+          <h4><a href="{{ item.link }}">{{ item.title }}</a> <a href="{{ item.feed.link }}">(via)</a></h4>
           {% endfor %}
         </div>
         
