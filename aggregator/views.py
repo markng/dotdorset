@@ -6,12 +6,13 @@ import pprint
 
 def index(request):
   """index view"""
-  dictionary = {}
-  blogitems = FeedItem.objects.filter(feed__category__name='Blogs').order_by('-pub_date')[0:5]
-  twitteritems = FeedItem.objects.filter(feed__category__name='Twitter').order_by('-pub_date')[0:15]
-  mlitems = FeedItem.objects.filter(feed__category__name='Mailing List').order_by('-pub_date')[0:5]
-  jobitems = FeedItem.objects.filter(feed__category__name='Jobs').order_by('-pub_date')[0:3]
-  bookmarkitems = FeedItem.objects.filter(feed__category__name='Bookmarks').order_by('-pub_date')[0:20]
+  totemplate = {}
+  totemplate['blogitems'] = FeedItem.objects.filter(feed__category__name='Blogs').order_by('-pub_date')[0:5]
+  totemplate['twitteritems'] = FeedItem.objects.filter(feed__category__name='Twitter').order_by('-pub_date')[0:15]
+  totemplate['mlitems'] = FeedItem.objects.filter(feed__category__name='Mailing List').order_by('-pub_date')[0:5]
+  totemplate['jobitems'] = FeedItem.objects.filter(feed__category__name='Jobs').order_by('-pub_date')[0:2]
+  totemplate['bookmarkitems'] = FeedItem.objects.filter(feed__category__name='Bookmarks').order_by('-pub_date')[0:20]
+  totemplate['eventitems'] = FeedItem.objects.filter(feed__category__name='Events').order_by('-pub_date')[0:2]
   
-  rendered = render_to_string('aggregator_index.html', {'blogitems': blogitems, 'twitteritems': twitteritems, 'mlitems': mlitems, 'jobitems': jobitems, 'bookmarkitems': bookmarkitems})
+  rendered = render_to_string('aggregator_index.html', totemplate)
   return HttpResponse(rendered)
