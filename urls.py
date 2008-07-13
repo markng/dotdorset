@@ -1,4 +1,9 @@
 from django.conf.urls.defaults import *
+from dotdorset.aggregator.feed import FullFeed, CategoryFeed
+feeds = {
+  'category': CategoryFeed,
+  'all': FullFeed
+}
 
 urlpatterns = patterns('',
     # Example:
@@ -10,4 +15,5 @@ urlpatterns = patterns('',
     (r'^css/(?P<path>.*)$', 'django.views.static.serve', {'document_root': '/Users/mng/Documents/projects/django/dotdorset/css'}),
     (r'^images/(?P<path>.*)$', 'django.views.static.serve', {'document_root': '/Users/mng/Documents/projects/django/dotdorset/images'}),
     (r'^js/(?P<path>.*)$', 'django.views.static.serve', {'document_root': '/Users/mng/Documents/projects/django/dotdorset/js'}),
+    (r'^feeds/(?P<url>.*)/$', 'django.contrib.syndication.views.feed', {'feed_dict': feeds}),
 )

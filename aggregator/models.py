@@ -117,3 +117,7 @@ class FeedItem(models.Model):
     if not hasattr(self, 'unpickled'):
       self.unpickled = pickle.loads(self.pickle)
     return self.unpickled
+  
+  def get_absolute_url(self):
+    """return url for feed class"""
+    return self.link
