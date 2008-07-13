@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 {% load aggregator_tags %}
-
       {% block content %}
+      
         <div id="intro">
-          <h2>dotDorset is a portal for the Dorset web, tech and digital community. <a href="/join/"><strong>Join us.</strong></a></h2>
+          <h2>Putting Dorset on the digital map. <a href="/join/"><strong>Join us.</strong></a></h2>
         </div>
         <div id="blogs">
           <h2>Blogs</h2>
@@ -20,7 +20,11 @@
           <p>To get your Dorset events listed here, add them to the <a href="http://upcoming.yahoo.com/group/4604/">Dorset Web Group</a> on upcoming.</p>
           {% for item in eventitems %}
           <h3><a href="{{ item.link }}">{{ item.title }}</a></h3>
+          {% if item.fpitem.geo_lat %}
+          
+          {% endif %}
           <p>{{ item.description|sanitize|safe }}</p>
+          
           {% endfor %}
           
         </div>
@@ -77,7 +81,9 @@
           <h2>Bookmarks</h2>
           <p>To have your bookmarks listed here, email <a href="mailto:addme@dotdorset.org">addme@dotdorset.org</a></p>
           {% for item in bookmarkitems %}
-          <h4><a href="{{ item.link }}">{{ item.title }}</a> <a href="{{ item.feed.link }}">(via)</a></h4>
+          <div>
+            <h4><a href="{{ item.link }}">{{ item.title }}</a> <a href="{{ item.feed.link }}">(via)</a></h4>
+          </div>
           {% endfor %}
         </div>
         
