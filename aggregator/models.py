@@ -1,5 +1,5 @@
 from django.db import models, connection
-import urllib2, feedparser, pprint, datetime
+import urllib2, feedparser, pprint, datetime, pickle
 import djangofeedparserdates
 
 # Create your models here.
@@ -84,12 +84,13 @@ class Feed(models.Model):
           feeditem.author_link = getattr(entry.author_detail, 'href', '')
         if hasattr(entry,'content'):
           feeditem.content = entry.content[0].value
+        feeditem.pickle = pickle.dumps(entry)
         feeditem.unique_id = getattr(entry, 'id', '')
         feeditem.save()
       except Exception, e:
         #just print the exception, don't stop execution - this will break refreshes
         print e
-    return self, 'updated'
+      return self, 'updated'
 	
 class FeedItem(models.Model):
   """Item belonging to a feed"""
@@ -110,3 +111,9 @@ class FeedItem(models.Model):
   def __unicode__(self):
     """string rep"""
     return self.title
+  
+  def fpitem(self):
+    """return original feedparser item"""
+    if not hasattr(self, 'unpickled'):
+      self.unpickled = pickle.loads(self.pickle)
+    return self.unpickled
