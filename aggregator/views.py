@@ -14,7 +14,5 @@ def index(request):
   totemplate['jobitems'] = FeedItem.objects.filter(feed__category__name='Jobs').order_by('-pub_date')[0:2]
   totemplate['bookmarkitems'] = FeedItem.objects.filter(feed__category__name='Bookmarks').order_by('-pub_date')[0:20]
   totemplate['eventitems'] = FeedItem.objects.filter(feed__category__name='Events').order_by('-pub_date')[0:2]
-  totemplate['map_api_key'] = GOOGLE_MAPS_API_KEYS[request.META['SERVER_NAME']]
-  totemplate['keys'] = GOOGLE_MAPS_API_KEYS
   rendered = render_to_string('aggregator_index.html', totemplate)
   return HttpResponse(rendered)
