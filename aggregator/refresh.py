@@ -22,7 +22,7 @@ for	feed in feeds:
   try:
     refresh = feed.refresh()    
   except Exception, e:
-    print feed.url + ' failed'
+    print feed.url + ' failed ' + e
   else:
     print refresh[0].__unicode__()+' '+refresh[1]
 
