@@ -12,7 +12,7 @@ a img {border:none;}
 /* typography.css */
 body {font-size:75%;color:#222;background:#fff;font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;}
 h1, h2, h3, h4, h5, h6 {font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;font-weight:normal;color:#111;}
-h1 {font-size:3em;line-height:1;margin-bottom:0.5em;}
+h1 {font-size:2em;line-height:1;margin-bottom:0.5em;}
 h2 {font-size:2em;margin-bottom:0.75em;}
 h3 {font-size:1.5em;line-height:1;margin-bottom:1em;}
 h4 {font-size:1.2em;line-height:1.25;margin-bottom:1.25em;height:1.25em;}
@@ -55,9 +55,14 @@ body div.container
 	margin: 0 auto;
 }
 
-div.clear, div#footer
+div.clear, div#footer, div#bookmarks div
 {
   clear:both;
+}
+
+div.alt, div#events, div#mailinglist
+{
+  background: #c9e5f1;
 }
 
 div.full, div#intro
@@ -66,30 +71,58 @@ div.full, div#intro
   float: left;
 }
 
-div.half, div#blogs, div#mailinglist, div#bookmarks
+div.half, div#blogs
 {
   width: 470px;
   float:left;
-  margin-right:10px;
+  padding-right: 10px;
 }
 
-div.third
+div#blogs h2
+{
+  margin-right: -10px;
+}
+
+div.third, div#twitter,div#mailinglist, div#bookmarks
 {
   width: 310px;
   float:left;
-  margin-right:10px;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
-div.quarter, div#twitter, div#jobs
+div.twothirds
+{
+  width: 630px;
+  float: left;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+div.quarter, div#jobs, div#events
 {
   width: 230px;
   float:left;
-  margin-right:10px;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
-div.last, div#jobs
+div.last, div#jobs, div#bookmarks
 {
   margin-right: 0px;
+}
+
+div#intro h2, h2
+{
+  padding-left: 5px;
+  margin-left: -5px;
+  margin-right: -5px;
+}
+
+div#intro h2, div#intro h2 a, h2, h2 a
+{
+  background: #666;
+  color: #fff;
 }
 
 div h4 a
