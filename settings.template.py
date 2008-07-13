@@ -1,3 +1,4 @@
+import os
 # Django settings for dotdorset project.
 
 DEBUG = True
@@ -80,5 +81,11 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.admin',
     'dotdorset.aggregator',
+    'dotdorset.join',
     'extensions',
 )
+
+GOOGLE_MAPS_API_KEYS = {
+  'tolerance.markng.co.uk': 'ABQIAAAARLoA22nEYHR0NvOy5PhlABQCULP4XOMyhPd8d_NrQQEO8sT8XBRcnzN6opBIDWJu1LZNj_pwrPsp8A',
+  'dotdorset.org': 'ABQIAAAARLoA22nEYHR0NvOy5PhlABRzb6WlbTpBFu4KRv6X5rYmMGQeVxTcZCqq-phTHsx_Nm7TzbnRRsEd_A',
+}
