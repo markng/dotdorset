@@ -5,7 +5,7 @@ from dotdorset.aggregator.models import FeedItem, Feed, Category
 class CategoryFeed(DjangoFeed):
   """Category Feed"""
   title = "dotdorset feed"
-  link = "/"
+  link = "http://dotdorset.org/"
   description = "test"
   
   def get_object(self, bits):
@@ -23,7 +23,7 @@ class CategoryFeed(DjangoFeed):
 class FullFeed(DjangoFeed):
   """Full Feed"""
   title = "dotdorset feed"
-  link = "/"
+  link = "http://dotdorset.org/"
   description = "test"
 
   def items(self):
