@@ -10,3 +10,7 @@ def sanitize(value):
   html = HTML(value)
   sanitizer = HTMLSanitizer()
   return html | sanitizer
+
+def twitterize(value):
+  """do twitter autolinking"""
+  return(value)
