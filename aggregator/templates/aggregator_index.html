@@ -6,7 +6,7 @@
           <h2>Putting Dorset on the digital map. <a href="/join/"><strong>Join us.</strong></a></h2>
         </div>
         <div id="blogs">
-          <h2>Blogs</h2>
+          <h2>Blogs <a href="/feeds/categories/Blogs"><img src="/images/feed.png" alt="RSS Feed" /></a></h2>
           <p>To have your blog listed here, email <a href="mailto:addme@dotdorset.org">addme@dotdorset.org</a></p>
           {% for item in blogitems %}
           <h3><a href="{{ item.link }}">{{ item.title }}</a></h3>
@@ -16,7 +16,7 @@
         </div>
         
         <div id="events">
-          <h2>Events</h2>
+          <h2>Events <a href="/feeds/categories/Events"><img src="/images/feed.png" alt="RSS Feed" /></a></h2>
           <p>To get your Dorset events listed here, add them to the <a href="http://upcoming.yahoo.com/group/4604/">Dorset Web Group</a> on upcoming.</p>
           {% for item in eventitems %}
           <h3><a href="{{ item.link }}">{{ item.title }}</a></h3>
@@ -31,7 +31,7 @@
         
         
         <div id="jobs">
-          <h2>Jobs</h2>
+          <h2>Jobs <a href="/feeds/categories/Jobs"><img src="/images/feed.png" alt="RSS Feed" /></a></h2>
           <p>If you're a web company based in Dorset, and have have an RSS feed for your jobs, email <a href="mailto:addme@dotdorset.org">addme@dotdorset.org</a> to get listed here for <strong>free !</strong></p>
           {% for item in jobitems %}
           <h3><a href="{{ item.link }}">{{ item.title }}</a></h3>
@@ -50,7 +50,7 @@
         </div>
         
         <div id="twitter">
-          <h2><a href="http://twitter.com/dotdorset">Twitter</a></h2>
+          <h2><a href="http://twitter.com/dotdorset">Twitter</a> <a href="/feeds/categories/Twitter"><img src="/images/feed.png" alt="RSS Feed" /></a></h2>
           <p>Follow <a href="http://twitter.com/dotdorset"><strong>@dotdorset</strong></a> if you want to appear here !</p>
           {% for item in twitteritems %}
           <div class="content">
@@ -78,7 +78,7 @@
           {% endfor %}          
         </div>
         <div id="bookmarks">
-          <h2>Bookmarks</h2>
+          <h2>Bookmarks <a href="/feeds/categories/Bookmarks"><img src="/images/feed.png" alt="RSS Feed" /></a></h2>
           <p>To have your bookmarks listed here, email <a href="mailto:addme@dotdorset.org">addme@dotdorset.org</a></p>
           {% for item in bookmarkitems %}
           <div>

@@ -6,14 +6,15 @@ class CategoryFeed(DjangoFeed):
   """Category Feed"""
   title = "dotdorset feed"
   link = "http://dotdorset.org/"
-  description = "test"
   
   def get_object(self, bits):
-    # In case of "/rss/beats/0613/foo/bar/baz/", or other such clutter,
-    # check that bits has only one member.
     if len(bits) != 1:
         raise ObjectDoesNotExist
     return Category.objects.get(name__exact=bits[0])
+
+  def description(self, obj):
+    """description for feed"""
+    return "%s from dotDorset" % obj
   
   def items(self, obj):
     """return items"""
@@ -24,7 +25,7 @@ class FullFeed(DjangoFeed):
   """Full Feed"""
   title = "dotdorset feed"
   link = "http://dotdorset.org/"
-  description = "test"
+  description = "dotDorset Feed"
 
   def items(self):
     """return items"""

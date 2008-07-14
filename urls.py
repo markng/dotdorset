@@ -1,7 +1,7 @@
 from django.conf.urls.defaults import *
 from dotdorset.aggregator.feed import FullFeed, CategoryFeed
 feeds = {
-  'category': CategoryFeed,
+  'categories': CategoryFeed,
   'all': FullFeed
 }
 
