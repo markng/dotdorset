@@ -1,5 +1,5 @@
 from django.db import models, connection
-import urllib2, feedparser, pprint, datetime, pickle
+import urllib2, feedparser, pprint, datetime, pickle, base64
 import djangofeedparserdates
 
 # Create your models here.
@@ -84,7 +84,7 @@ class Feed(models.Model):
           feeditem.author_link = getattr(entry.author_detail, 'href', '')
         if hasattr(entry,'content'):
           feeditem.content = entry.content[0].value
-        feeditem.pickle = pickle.dumps(entry)
+        feeditem.pickle = base64.b64encode(pickle.dumps(entry))
         feeditem.unique_id = getattr(entry, 'id', '')
         feeditem.save()
       except Exception, e:
