@@ -119,8 +119,11 @@ class FeedItem(models.Model):
       try:
         self.unpickled = pickle.loads(base64.b64decode(self.pickle))
       except Exception, e:
-        self.unpickled = pickle.loads(self.pickle)
-      
+        try:
+          self.unpickled = pickle.loads(self.pickle)
+        except Exception, e:
+          # fail silently here
+          return False
     return self.unpickled
   
   def get_absolute_url(self):
