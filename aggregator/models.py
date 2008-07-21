@@ -115,7 +115,7 @@ class FeedItem(models.Model):
   def fpitem(self):
     """return original feedparser item"""
     if not hasattr(self, 'unpickled'):
-      self.unpickled = pickle.loads(self.pickle)
+      self.unpickled = pickle.loads(base64.b64decode(self.pickle))
     return self.unpickled
   
   def get_absolute_url(self):
