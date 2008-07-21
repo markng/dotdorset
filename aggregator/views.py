@@ -11,8 +11,8 @@ def index(request):
   totemplate['blogitems'] = FeedItem.objects.filter(feed__category__name='Blogs').order_by('-pub_date')[0:5]
   totemplate['twitteritems'] = FeedItem.objects.filter(feed__category__name='Twitter').order_by('-pub_date')[0:15]
   totemplate['mlitems'] = FeedItem.objects.filter(feed__category__name='Mailing List').order_by('-pub_date')[0:5]
-  totemplate['jobitems'] = FeedItem.objects.filter(feed__category__name='Jobs').order_by('-pub_date')[0:2]
+  totemplate['jobitems'] = FeedItem.objects.filter(feed__category__name='Jobs').order_by('-pub_date')[0:3]
   totemplate['bookmarkitems'] = FeedItem.objects.filter(feed__category__name='Bookmarks').order_by('-pub_date')[0:20]
-  totemplate['eventitems'] = FeedItem.objects.filter(feed__category__name='Events').order_by('-pub_date')[0:2]
+  totemplate['eventitems'] = FeedItem.objects.filter(feed__category__name='Events').order_by('-pub_date')[0:3]
   rendered = render_to_string('aggregator_index.html', totemplate)
   return HttpResponse(rendered)
