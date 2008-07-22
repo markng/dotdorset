@@ -35,6 +35,7 @@ p {
     margin: 1.5em;
 }
 img{
+    margin: 0;
     border: none;
 }
 
@@ -84,7 +85,7 @@ line-height: 1.5em;
 /*20px*/
 h2 {
     font-size: 1.25em;
-    padding: 0.9em;
+    padding: 1em;
     background: #666666;
     color: #fff;
 }
