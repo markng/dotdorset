@@ -245,8 +245,8 @@ border:none;
 
 .rss{
 color: #fff;
-background: transparent url(../images/feed-icon-28x28.png) no-repeat 100% 0;
-padding: 0 2em 0.5em 0;
+/*background: transparent url(../images/feed-icon-28x28.png) no-repeat 100% 0;*/
+padding: 0 0.5em 0.5em 0;
 text-decoration: none;
 }
 #intro{
