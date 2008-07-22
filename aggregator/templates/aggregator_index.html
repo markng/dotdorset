@@ -20,9 +20,6 @@
           <p>To get your Dorset events listed here, add them to the <a href="http://upcoming.yahoo.com/group/4604/">Dorset Web Group</a> on upcoming.</p>
           {% for item in eventitems %}
           <h3><a href="{{ item.link }}">{{ item.title }}</a></h3>
-          {% if item.fpitem.geo_lat %}
-          
-          {% endif %}
           <p>{{ item.description|sanitize|safe }}</p>
           
           {% endfor %}
@@ -53,11 +50,11 @@
           <h2><a href="http://twitter.com/dotdorset">Twitter</a> <a href="/feeds/categories/Twitter"><img src="/images/feed.png" alt="RSS Feed" /></a></h2>
           <p>Follow <a href="http://twitter.com/dotdorset"><strong>@dotdorset</strong></a> if you want to appear here !</p>
           {% for item in twitteritems %}
-          <div class="content">
+          <div class="content{% cycle '' ' even' %}">
             {% if item.content %}
-              {{ item.content|sanitize|safe }}
+              <p>{{ item.content|sanitize|safe }}</p>
             {% else %}
-              {{ item.description|sanitize|safe }}
+              <p>{{ item.description|sanitize|safe }}</p>
             {% endif %}
           </div>
           {% endfor %}
@@ -70,9 +67,9 @@
           <h3><a href="{{ item.link }}">{{ item.title }}</a></h3>
           <div class="content">
             {% if item.content %}
-              {{ item.content|sanitize|safe }}
+              <p>{{ item.content|sanitize|safe }}</p>
             {% else %}
-              {{ item.description|sanitize|safe }}
+              <p>{{ item.description|sanitize|safe }}</p>
             {% endif %}
           </div>
           {% endfor %}          
@@ -81,7 +78,7 @@
           <h2>Bookmarks <a href="/feeds/categories/Bookmarks"><img src="/images/feed.png" alt="RSS Feed" /></a></h2>
           <p>To have your bookmarks listed here, email <a href="mailto:addme@dotdorset.org">addme@dotdorset.org</a></p>
           {% for item in bookmarkitems %}
-          <div>
+          <div class="content{% cycle '' ' even' %}">
             <h4><a href="{{ item.link }}">{{ item.title }}</a> <a href="{{ item.feed.link }}">(via)</a></h4>
           </div>
           {% endfor %}

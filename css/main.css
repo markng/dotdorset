@@ -165,7 +165,7 @@ border:none;
     visibility: hidden;
 }
 
-.box_1, .box_2, .box_3, .box_4, .box_5, .box_6, .box_7, .box_8, .box_9, .box_10, .box_11, .box_12, .box_13, .box_14, .box_15, .box_16, .box_17, .box_18, .box_19, .box_20, .box_21, .box_22, .box_23, .box_24 {
+#footer, #blogs, #intro, #events, #jobs, #twitter, #mailinglist, #bookmarks, .box_1, .box_2, .box_3, .box_4, .box_5, .box_6, .box_7, .box_8, .box_9, .box_10, .box_11, .box_12, .box_13, .box_14, .box_15, .box_16, .box_17, .box_18, .box_19, .box_20, .box_21, .box_22, .box_23, .box_24 {
     float: left;
 }
 .box_1 {
@@ -183,13 +183,13 @@ border:none;
 .box_5 {
     width: 12.5em;
 }
-.box_6 {
+.box_6, #events, #jobs {
     width: 15em;
 }
 .box_7 {
     width: 17.5em;
 }
-.box_8 {
+.box_8, #twitter, #mailinglist, #bookmarks {
     width: 20em;
 }
 .box_9 {
@@ -201,7 +201,7 @@ border:none;
 .box_11 {
     width: 27.5em;
 }
-.box_12 {
+.box_12, #blogs {
     width: 30em;
 }
 .box_13 {
@@ -237,7 +237,7 @@ border:none;
 .box_23 {
     width: 57.5em;
 }
-.box_24 {
+.box_24, #intro, #footer {
     width: 60em;
 }
 /*end structure*/
