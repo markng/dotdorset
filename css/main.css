@@ -1,145 +1,270 @@
-/* reset and typography mostly nicked from blueprint, with bits removed. ( http://code.google.com/p/blueprintcss/ ) */
-/* reset.css */
-html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, code, del, dfn, em, img, q, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {margin:0;padding:0;border:0;font-weight:inherit;font-style:inherit;font-size:100%;font-family:inherit;vertical-align:baseline;}
-body {line-height:1.5;}
-table {border-collapse:separate;border-spacing:0;}
-caption, th, td {text-align:left;font-weight:normal;}
-table, td, th {vertical-align:middle;}
-blockquote:before, blockquote:after, q:before, q:after {content:"";}
-blockquote, q {quotes:"" "";}
-a img {border:none;}
-
-/* typography.css */
-body {font-size:75%;color:#222;background:#fff;font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;}
-h1, h2, h3, h4, h5, h6 {font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;font-weight:normal;color:#111;}
-h1 {font-size:2em;line-height:1;margin-bottom:0.5em;}
-h2 {font-size:2em;margin-bottom:0.75em;}
-h3 {font-size:1.5em;line-height:1;margin-bottom:1em;}
-h4 {font-size:1.2em;line-height:1.25;margin-bottom:1.25em;}
-h5 {font-size:1em;font-weight:bold;margin-bottom:1.5em;}
-h6 {font-size:1em;font-weight:bold;}
-h1 img, h2 img, h3 img, h4 img, h5 img, h6 img {margin:0;}
-p {margin:0 0 1.5em;}
-p img {float:left;margin:1.5em 1.5em 1.5em 0;padding:0;}
-p img.right {float:right;margin:1.5em 0 1.5em 1.5em;}
-a:focus, a:hover {color:#000;}
-a {color:#000;text-decoration:underline;}
-blockquote {margin:1.5em;color:#666;font-style:italic;}
-strong {font-weight:bold;}
-em, dfn {font-style:italic;}
-dfn {font-weight:bold;}
-sup, sub {line-height:0;}
-abbr, acronym {border-bottom:1px dotted #666;}
-address {margin:0 0 1.5em;font-style:italic;}
-del {color:#666;}
-pre, code {margin:1.5em 0;white-space:pre;}
-pre, code, tt {font:1em 'andale mono', 'lucida console', monospace;line-height:1.5;}
-li ul, li ol {margin:0 1.5em;}
-ul, ol {margin:0 1.5em 1.5em 1.5em;}
-ul {list-style-type:disc;}
-ol {list-style-type:decimal;}
-dl {margin:0 0 1.5em 0;}
-dl dt {font-weight:bold;}
-dd {margin-left:1.5em;}
-table {margin-bottom:1.4em;width:100%;}
-th {font-weight:bold;background:#C3D9FF;}
-th, td {padding:4px 10px 4px 5px;}
-tr.even td {background:#E5ECF9;}
-tfoot {font-style:italic;}
-caption {background:#eee;}
-
-/* dotDorset styles */
-body div.container
-{
-	width: 960px;
-	margin: 0 auto;
+form,fieldset{
+margin:0;
+padding:0;
+}
+h1,h2,h3,h4,h5,ul{
+font-size:100%;
+font-weight:400;
+margin:0;
+padding:0;
 }
 
-div.clear, div#footer, div#bookmarks div
-{
-  clear:both;
+
+a{
+color: #000;
 }
 
-div.alt, div#events, div#mailinglist
-{
-  background: #c9e5f1;
+html {
+    font-size: 100%;
+}
+body {
+    font-size: 1em;
+    line-height: 1.127em;
+  	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #444;
+    background: #fff;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+/*typography*/
+/*baseline 18px*/
+/*12px*/
+p {
+    font-size: 0.75em;
+    margin: 1.5em;
+}
+img{
+    margin: 0 1.2em 0 1.2em ;
+    border: none;
 }
 
-div.full, div#intro
-{
-  width: 960px;
-  float: left;
+ul {
+    font-size: 0.75em;
+    margin: 1.5em;
+    padding: 0;
+}
+li {
+    margin: 0 1.36em 0 1.36em;
 }
 
-div.half, div#blogs
-{
-  width: 470px;
-  float:left;
-  padding-right: 10px;
+/*22px*/
+h1 {
+    font-size: 1.38em;
+    margin: 0.82em 0.82em  0.82em 0.82em;
+    clear: both;
+    display: inline-block;
+    position: relative;
+}
+h1 a{
+display: block;
+background: #fff url(../images/dotDorset.png) no-repeat 0 0;
+padding:  0 0 75px 0;
+text-indent: -10000px;
+width: 325px;
+overflow: hidden;
+height: 0;
+float: left;
 }
 
-div#blogs h2
-{
-  margin-right: -10px;
+h1 span{
+float: left;
+display: block;
+font-size: 1.5em;
+color: #3399CC;
+position: absolute;
+left: 320px;
+top: 25px;
+width: 18em;
+height: 1.5em;
+padding: 0;
+margin: 0;
+line-height: 1.5em;
 }
 
-div.third, div#twitter,div#mailinglist, div#bookmarks
-{
-  width: 310px;
-  float:left;
-  padding-left: 5px;
-  padding-right: 5px;
+/*20px*/
+h2 {
+    font-size: 1.25em;
+    padding: 0.9em;
+    background: #666666;
+    color: #fff;
 }
 
-div.twothirds
-{
-  width: 630px;
-  float: left;
-  padding-left: 5px;
-  padding-right: 5px;
+
+/*18px*/
+h3,fieldset {
+    font-size: 1.13em;
+    margin: 1em;
+
+}
+/*16px*/
+h4 {
+    font-size: 1em;
+    margin: 1.125em;
 }
 
-div.quarter, div#jobs, div#events
-{
-  width: 230px;
-  float:left;
-  padding-left: 5px;
-  padding-right: 5px;
+/*14px*/
+h5 {
+    font-size: 0.88em;
+    margin: 1.29em;
+}
+/*end typography*/
+
+
+
+
+
+
+
+#footer {
+background: #000;
+color: #fff;
 }
 
-div.last, div#jobs, div#bookmarks
-{
-  margin-right: 0px;
+#footer a{
+
+color: #fff;
 }
 
-div#intro h2, h2
-{
-  padding-left: 5px;
-  margin-left: -5px;
-  margin-right: -5px;
+#footer ul{
+    text-align: center;
+padding:0;
+margin: 1.5em;
 }
 
-div#intro h2, div#intro h2 a, h2, h2 a
-{
-  background: #666;
-  color: #fff;
+#footer ul li {
+    display: inline;
+    border-right: 1px solid;
+
+    padding: 0 0.6em 0 0.2em;
+    margin:0;
+
+}
+#footer ul li.last{
+border:none;
 }
 
-div h4 a
-{
-  font-style: italic;
+
+
+/*end menus*/
+/*structure*/
+#main {
+    margin: 0 auto 0 auto;
+    text-align: left;
+    background: #fff;
+    width: 60em;
+    padding: 0;
 }
 
-div#footer
-{
-  background: #000000;
-  color: #fff;
-  min-height: 100px;
-  margin-bottom: 0;
-  
+#main:after {
+    content: ".";
+    display: block;
+    height: 1em;
+    font-size: 0;
+    clear: both;
+    visibility: hidden;
 }
 
-div#footer a
-{
-  color: #fff;
+.box_1, .box_2, .box_3, .box_4, .box_5, .box_6, .box_7, .box_8, .box_9, .box_10, .box_11, .box_12, .box_13, .box_14, .box_15, .box_16, .box_17, .box_18, .box_19, .box_20, .box_21, .box_22, .box_23, .box_24 {
+    float: left;
+}
+.box_1 {
+    width: 2.5em;
+}
+.box_2 {
+    width: 5em;
+}
+.box_3 {
+    width: 7.5em;
+}
+.box_4 {
+    width: 10em;
+}
+.box_5 {
+    width: 12.5em;
+}
+.box_6 {
+    width: 15em;
+}
+.box_7 {
+    width: 17.5em;
+}
+.box_8 {
+    width: 20em;
+}
+.box_9 {
+    width: 22.5em;
+}
+.box_10 {
+    width: 25em;
+}
+.box_11 {
+    width: 27.5em;
+}
+.box_12 {
+    width: 30em;
+}
+.box_13 {
+    width: 32.5em;
+}
+.box_14 {
+    width: 35em;
+}
+.box_15 {
+    width: 37.5em;
+}
+.box_16 {
+    width: 40em;
+}
+.box_17 {
+    width: 42.5em;
+}
+.box_18 {
+    width: 45em;
+}
+.box_19 {
+    width: 47.5em;
+}
+.box_20 {
+    width: 50em;
+}
+.box_21 {
+    width: 52.5em;
+}
+.box_22 {
+    width: 55em;
+}
+.box_23 {
+    width: 57.5em;
+}
+.box_24 {
+    width: 60em;
+}
+/*end structure*/
+
+
+.rss{
+color: #fff;
+background: transparent url(../images/feed-icon-28x28.png) no-repeat 100% 0;
+padding: 0 2em 0.5em 0;
+text-decoration: none;
+}
+#intro{
+margin:  1em 0 1em 0;
+}
+#intro a, h2 a{
+color: #fff;
+}
+
+#events, .even{
+background: #CAE5F2;
+
+}
+
+.content{
+padding: 0.2em 0 0.2em 0;
+}
+
+#jobs, #twitter,#bookmarks{
+background: #E6F3F9;
 }
