@@ -268,3 +268,7 @@ padding: 0.2em 0 0.2em 0;
 #jobs, #twitter,#bookmarks{
 background: #E6F3F9;
 }
+
+.clear{
+  clear: both;
+}
