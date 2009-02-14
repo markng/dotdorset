@@ -1,10 +1,11 @@
 from django.conf.urls.defaults import *
+from django.contrib import admin, databrowse
 from dotdorset.aggregator.feed import FullFeed, CategoryFeed
 feeds = {
   'categories': CategoryFeed,
   'all': FullFeed
 }
-
+admin.autodiscover()
 urlpatterns = patterns('',
     # Example:
     # (r'^dotdorset/', include('dotdorset.foo.urls')),

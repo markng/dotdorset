@@ -1,4 +1,5 @@
 from django.db import models, connection
+from django.contrib import admin, databrowse
 import urllib2, feedparser, pprint, datetime, pickle, base64
 import djangofeedparserdates
 
@@ -9,8 +10,7 @@ class Category(models.Model):
   def __unicode__(self):
     """string rep"""
     return self.name
-  class Admin:
-    pass
+admin.site.register(Category)
 
 class Feed(models.Model):
   """Feed to be aggregated"""
@@ -30,10 +30,7 @@ class Feed(models.Model):
   last_modified = models.DateTimeField("Time Last Modified at server", null=True, blank=True)
   etag = models.TextField("Etag from server", null=True, blank=True)
   category = models.ForeignKey(Category)
-  approved = models.BooleanField()
-  class Admin:
-    pass
-		
+  approved = models.BooleanField()		
   def __unicode__(self):
     """string rep"""
     return self.title
@@ -91,6 +88,7 @@ class Feed(models.Model):
         #just print the exception, don't stop execution - this will break refreshes
         print e
       return self, 'updated'
+admin.site.register(Feed)
 	
 class FeedItem(models.Model):
   """Item belonging to a feed"""
@@ -128,3 +126,4 @@ class FeedItem(models.Model):
   def get_absolute_url(self):
     """return url for feed class"""
     return self.link
+admin.site.register(FeedItem)
