@@ -27,5 +27,9 @@ for	feed in feeds:
     except Exception, e:
       pass
   else:
-    print refresh[0].__unicode__()+' '+refresh[1]
+    try:
+      print refresh[0].__unicode__()+' '+refresh[1]
+    except Exception, e:
+      pass
+    
 
