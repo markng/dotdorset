@@ -10,7 +10,11 @@ class Category(models.Model):
   def __unicode__(self):
     """string rep"""
     return self.name
-admin.site.register(Category)
+try:
+  admin.site.register(Category)
+except Exception, e:
+  pass
+
 
 class Feed(models.Model):
   """Feed to be aggregated"""
@@ -88,7 +92,10 @@ class Feed(models.Model):
         #just print the exception, don't stop execution - this will break refreshes
         print e
       return self, 'updated'
-admin.site.register(Feed)
+try:
+  admin.site.register(Feed)
+except Exception, e:
+  pass
 	
 class FeedItem(models.Model):
   """Item belonging to a feed"""
@@ -126,4 +133,7 @@ class FeedItem(models.Model):
   def get_absolute_url(self):
     """return url for feed class"""
     return self.link
-admin.site.register(FeedItem)
+try:
+  admin.site.register(FeedItem)
+except Exception, e:
+  pass
