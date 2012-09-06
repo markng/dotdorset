@@ -1,6 +1,6 @@
 from django.contrib.syndication.views import Feed as DjangoFeed
 from django.contrib.syndication.views import FeedDoesNotExist
-from dotdorset.aggregator.models import FeedItem, Feed, Category
+from aggregator.models import FeedItem, Feed, Category
 
 class CategoryFeed(DjangoFeed):
   """Category Feed"""
