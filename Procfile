@@ -1,0 +1,1 @@
+web: ./manage.py run_gunicorn 0.0.0.0:$PORT --workers=9 -k gevent --max-requests 250
