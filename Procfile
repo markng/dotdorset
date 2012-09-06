@@ -1,1 +1,1 @@
-web: ./manage.py run_gunicorn 0.0.0.0:$PORT --workers=9 -k gevent --max-requests 250
+web: ./manage.py collectstatic --noinput; ./manage.py run_gunicorn 0.0.0.0:$PORT --workers=9 -k gevent --max-requests 250
