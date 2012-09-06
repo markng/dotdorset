@@ -1,5 +1,5 @@
-from django.contrib.syndication.feeds import Feed as DjangoFeed
-from django.contrib.syndication.feeds import FeedDoesNotExist
+from django.contrib.syndication.views import Feed as DjangoFeed
+from django.contrib.syndication.views import FeedDoesNotExist
 from dotdorset.aggregator.models import FeedItem, Feed, Category
 
 class CategoryFeed(DjangoFeed):

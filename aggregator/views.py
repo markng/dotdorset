@@ -3,6 +3,7 @@ from dotdorset.aggregator.models import *
 from dotdorset.settings import GOOGLE_MAPS_API_KEYS
 from django.template import Template
 from django.template.loader import render_to_string
+from django.template import RequestContext
 import pprint
 
 def index(request):
@@ -14,5 +15,6 @@ def index(request):
   totemplate['jobitems'] = FeedItem.objects.filter(feed__category__name='Jobs').order_by('-pub_date')[0:3]
   totemplate['bookmarkitems'] = FeedItem.objects.filter(feed__category__name='Bookmarks').order_by('-pub_date')[0:20]
   totemplate['eventitems'] = FeedItem.objects.filter(feed__category__name='Events').order_by('-pub_date')[0:3]
-  rendered = render_to_string('aggregator_index.html', totemplate)
+  context = RequestContext(request, totemplate)
+  rendered = render_to_string('aggregator_index.html', context)
   return HttpResponse(rendered)
