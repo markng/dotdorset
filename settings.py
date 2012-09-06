@@ -86,6 +86,6 @@ GOOGLE_MAPS_API_KEYS = {
 }
 
 try:
-    import localsettings
+    from localsettings import *
 except Exception, e:
     pass
