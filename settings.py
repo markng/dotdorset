@@ -78,7 +78,9 @@ INSTALLED_APPS = (
     'join',
     'django_extensions',
     'gunicorn',
+    'storages',
 )
+
 
 GOOGLE_MAPS_API_KEYS = {
   'tolerance.markng.co.uk': 'ABQIAAAARLoA22nEYHR0NvOy5PhlABQCULP4XOMyhPd8d_NrQQEO8sT8XBRcnzN6opBIDWJu1LZNj_pwrPsp8A',
@@ -89,3 +91,12 @@ try:
     from localsettings import *
 except Exception, e:
     pass
+
+
+if not DEBUG:
+    STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+    DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+    AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID', None)
+    AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY', None)
+    AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME', None)
+    STATIC_URL = 'http://du6kqsgpwn58q.cloudfront.net/'
