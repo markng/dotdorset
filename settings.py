@@ -4,7 +4,7 @@ import dj_database_url
 
 DEBUG = False
 TEMPLATE_DEBUG = DEBUG
-
+PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
 ADMINS = (
     # ('Your Name', 'your_email@domain.com'),
 )
@@ -39,7 +39,7 @@ MEDIA_ROOT = ''
 # Examples: "http://media.lawrence.com", "http://example.com/media/"
 MEDIA_URL = ''
 STATIC_URL = '/static/'
-STATIC_ROOT = 'static/'
+STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static/')
 
 # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
 # trailing slash.
