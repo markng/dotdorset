@@ -1,5 +1,6 @@
 Django==1.4.1
 Genshi==0.6
+boto==2.5.2
 dj-database-url==0.2.1
 django-extensions==0.9
 django-storages==1.1.5
