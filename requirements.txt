@@ -1,4 +1,4 @@
-Django==1.4.1
+Django==1.11.28
 Genshi==0.6
 boto==2.5.2
 dj-database-url==0.2.1
